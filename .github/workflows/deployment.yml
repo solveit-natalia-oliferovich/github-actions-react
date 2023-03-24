@@ -1,4 +1,4 @@
-name: Deploy React App
+name: Deployment
 on:
   push:
     branches:
@@ -38,14 +38,14 @@ jobs:
       matrix:
         node-v: [14, 16]
         os: [ubuntu-latest, windows-latest]
-    runs-on: {{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Get repository code
         uses: actions/checkout@v3
       - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: {{ matrix.node-v }}
+          node-version: ${{ matrix.node-v }}
       - name: Cache deps
         uses: actions/cache@v3
         with:
